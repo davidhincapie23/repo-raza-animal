@@ -1,0 +1,49 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>index</title>
+    <link rel="stylesheet" href="{% static '/bootstrap.min.css' %}">
+  </head>
+  <body>
+    
+    <div class="container">
+
+        <a href="crear_nuevo_animal" class="btn btn-outline-dark mt-5">Crear Nuevo</a>
+
+        <table class="table table-bordered table-info mt-5 text-center">
+        <thead>
+            <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Raza</th>
+            <th>Descripcion</th>
+            <th>Opciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for animal in animals %}
+                <tr>
+                    <th>{{ animal.id }}</th>
+                    <td>{{ animal.name }}</td>
+                    <td>{{ animal.raza }}</td>
+                    <td>{{ animal.description }}</td>
+                    <td>
+                        <a href="detalles_animal_{{ animal.id }}" class="btn btn-danger">Ver mas</a>
+                        <a href="editar_animal_{{ animal.id }}" class="btn btn-success">Editar</a>
+                        <a href="eliminar_animal_{{ animal.id }}" class="btn btn-primary">Eliminar</a>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+        </table>
+
+
+    </div>
+
+
+  </body>
+</html>
